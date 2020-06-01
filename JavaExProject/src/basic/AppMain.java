@@ -56,17 +56,12 @@ public class AppMain extends Application { // 생성자 호출 -> init 실행
 		Scene scene = new Scene(root); // 임포트 해줘야함.
 		primaryStage.setScene(scene);
 		primaryStage.show(); // 화면을 보여주는 것
-
 	}
-
 	@Override
 	public void stop() throws Exception { // 오버라이드 해줘야함.
 		System.out.println(Thread.currentThread().getName() + " : stop() 실행");
 	}
-
 	public static void main(String[] args) { // 실행시키는 부분
 		Application.launch(args);
-
 	}
-
 }
