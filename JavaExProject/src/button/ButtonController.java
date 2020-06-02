@@ -28,7 +28,9 @@ public class ButtonController implements Initializable {
 			@Override
 			public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
 				
-				Image image = new Image(getClass().getResource("../images/" + newValue.getUserData().toString() +".png").toString());
+				Image image = new Image(getClass().getResource("/images/" + newValue.getUserData().toString() +".png").toString());
+				radioImageView.setImage(image);
+				
 //				radioImageView.setImage(new Image(getClass().getResource("../images/" + newValue.getUserData().toString() +".png").toString()));	
 			}			
 		});
