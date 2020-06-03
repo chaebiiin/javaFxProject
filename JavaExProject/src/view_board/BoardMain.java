@@ -1,4 +1,4 @@
-package view_pack;
+package view_board;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
