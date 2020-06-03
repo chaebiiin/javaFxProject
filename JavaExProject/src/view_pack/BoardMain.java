@@ -1,4 +1,4 @@
-package input_pack;
+package view_pack;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,18 +6,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class InputMain extends Application {
+public class BoardMain extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("InputControl.fxml"));
-		Scene scene = new Scene(root);
-		primaryStage.setScene(scene);
-		primaryStage.show();
+	Parent root = FXMLLoader.load(getClass().getResource("BoardControl.fxml"));
+	Scene scene = new Scene(root);
+	primaryStage.setScene(scene);
+	primaryStage.show();
+	primaryStage.setTitle("BoardControl");
 	}
-
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
 }
