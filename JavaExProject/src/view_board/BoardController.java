@@ -91,7 +91,7 @@ public class BoardController implements Initializable {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
-				Board board = new Board(rs.getString("title"), null, rs.getString("exit_date"),
+				Board board = new Board(rs.getString("title"), rs.getString("publicity"), rs.getString("exit_date"),
 						rs.getString("content"));
 				list.add(board);
 			}
@@ -109,8 +109,8 @@ public class BoardController implements Initializable {
 
 	}
 
-	public void handleBtnCancelAction(ActionEvent e) {
-		Platform.exit();
+	public void handleBtnModifyAction(ActionEvent e) {
+//		Platform.M();
 	}
 
 }

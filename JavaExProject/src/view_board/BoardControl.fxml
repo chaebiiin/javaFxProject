@@ -9,7 +9,7 @@
 		<Label layoutX="25" layoutY="30" text="리스트" />
 		<TableView fx:id="tableView" layoutX="25" layoutY="55" prefHeight="241" prefWidth="199.0" />
 
-		<Label  layoutX="264.0" layoutY="30.0" text="         상세내용              " />
+		<Label layoutX="264.0" layoutY="30.0" text="         상세내용              " />
 		<Label layoutX="261.0" layoutY="55.0" text="제목" />
 		<TextField fx:id="txtTitle" layoutX="309.0" layoutY="51.0" prefHeight="23" prefWidth="192" />
 
@@ -24,9 +24,9 @@
 		<TextArea fx:id="txtContent" layoutX="261.0" layoutY="163.0" prefHeight="131" prefWidth="247" />
 		<Separator layoutX="33.0" layoutY="303.0" prefHeight="4.0" prefWidth="480.0" />
 
-		<Button fx:id="btnBack" layoutX="179.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleBtnBackAction" text="이전" />
-		<Button fx:id="btnNext" layoutX="225.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleBtnNextAction" text="다음" />
-		<Button fx:id="btnCancel" layoutX="288.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleBtnCancelAction" text="수정" />
+		<Button fx:id="btnBack" layoutX="156.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleBtnBackAction" text="이전" />
+		<Button fx:id="btnNext" layoutX="224.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleBtnNextAction" text="다음" />
+		<Button fx:id="btnCancel" layoutX="292.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleBtnModifyAction" text="수정" />
 
 	</children>
 </AnchorPane>
