@@ -110,7 +110,14 @@ public class BoardController implements Initializable {
 	}
 
 	public void handleBtnModifyAction(ActionEvent e) {
-//		Platform.M();
-	}
+		String sql = "UPDATE board SET content = ? WHERE title = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, );
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+}
 
 }
