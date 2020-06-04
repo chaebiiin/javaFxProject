@@ -1,43 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.collections.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
-	prefWidth=" 580" prefHeight="380"
-	fx:controller="view_board.BoardController">
+<AnchorPane prefHeight="350" prefWidth="530.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view_board.BoardController">
 	<children>
-		<Label layoutX="25" layoutY="30" text="리스트"></Label>
-		<TableView layoutX="25" layoutY="55" prefHeight="241"
-			prefWidth="175" />
+		<Label layoutX="25" layoutY="30" text="리스트" />
+		<TableView fx:id="tableView" layoutX="25" layoutY="55" prefHeight="241" prefWidth="199.0" />
 
-		<Label layoutX="238" layoutY="30"
-			text="         상세내용              "></Label>
-		<Label layoutX="235" layoutY="55" text="제목"></Label>
-		<TextField layoutX="283" layoutY="51" prefHeight="23"
-			prefWidth="192" />
+		<Label  layoutX="264.0" layoutY="30.0" text="         상세내용              " />
+		<Label layoutX="261.0" layoutY="55.0" text="제목" />
+		<TextField fx:id="txtTitle" layoutX="309.0" layoutY="51.0" prefHeight="23" prefWidth="192" />
 
-		<Label layoutX="235" layoutY="88" text="공개여부"></Label>
-		<ComboBox layoutX="235" layoutY="110" prefHeight="23"
-			prefWidth="85">
+		<Label layoutX="261.0" layoutY="88.0" text="공개여부" />
+		<ComboBox fx:id="comboPublic" layoutX="261.0" layoutY="110.0" prefHeight="23" prefWidth="85">
 		
 		</ComboBox>
-		<Label layoutX="353" layoutY="88" text="종료일자"></Label>
-		<TextField layoutX="351" layoutY="110" prefHeight="23"
-			prefWidth="113" />
+		<Label layoutX="379.0" layoutY="88.0" text="종료일자(yy/mm/dd)" />
+		<TextField fx:id="dateExit" layoutX="377.0" layoutY="110.0" prefHeight="23" prefWidth="113" />
 
-		<Label layoutX="235" layoutY="139" text="내용"></Label>
-		<TextArea layoutX="235" layoutY="163" prefHeight="131"
-			prefWidth="247" />
-		<Separator layoutX="13.0" layoutY="320.0" prefHeight="0.0"
-			prefWidth="457.0" />
+		<Label layoutX="261.0" layoutY="139.0" text="내용" />
+		<TextArea fx:id="txtContent" layoutX="261.0" layoutY="163.0" prefHeight="131" prefWidth="247" />
+		<Separator layoutX="33.0" layoutY="303.0" prefHeight="4.0" prefWidth="480.0" />
 
-		<Button fx:id="btnReg" onAction="#handleBtnRegAction"
-			layoutX="189.0" layoutY="340.0" mnemonicParsing="false" text="등록" />
-		<Button fx:id="btnCancel" onAction="#handleBtnCancelAction"
-			layoutX="252.0" layoutY="340.0" mnemonicParsing="false" text="취소" />
+		<Button fx:id="btnBack" layoutX="179.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleBtnBackAction" text="이전" />
+		<Button fx:id="btnNext" layoutX="225.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleBtnNextAction" text="다음" />
+		<Button fx:id="btnCancel" layoutX="288.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleBtnCancelAction" text="수정" />
 
 	</children>
 </AnchorPane>
-
