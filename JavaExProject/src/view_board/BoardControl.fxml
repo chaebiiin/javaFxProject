@@ -26,7 +26,7 @@
 
 		<Button fx:id="btnBack" layoutX="156.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleBtnBackAction" text="이전" />
 		<Button fx:id="btnNext" layoutX="224.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleBtnNextAction" text="다음" />
-		<Button fx:id="btnCancel" layoutX="292.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleBtnModifyAction" text="수정" />
+		<Button fx:id="btnModify" layoutX="292.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleBtnModifyAction" text="수정" />
 
 	</children>
 </AnchorPane>

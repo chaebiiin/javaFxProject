@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -16,24 +15,42 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 
 public class BoardController implements Initializable {
 	Connection conn;
 	@FXML
 	TableView<Board> tableView;
-	@FXML TextField txtTitle;
-	@FXML ComboBox comboPublic;
-	@FXML TextField dateExit;
-	@FXML TextArea txtContent;
-	
+	@FXML
+	TextField txtTitle;
+	@FXML
+	ComboBox comboPublic;
+	@FXML
+	TextField dateExit;
+	@FXML
+	TextArea txtContent;
+	@FXML
+	Button btnModify, btnBack;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -44,7 +61,11 @@ public class BoardController implements Initializable {
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
+		showList();
 
+	}
+
+	public void showList() {
 		ObservableList<Board> boardList = getBoardList();
 		boardList.add(new Board("test", "공개", "2020/06/30", "내용"));
 		tableView.setItems(boardList);
@@ -59,8 +80,6 @@ public class BoardController implements Initializable {
 				txtContent.setText(newValue.getContent());
 			}
 
-			
-			
 		});
 		// title
 		TableColumn<Board, String> tcTitle = new TableColumn<Board, String>();
@@ -100,24 +119,61 @@ public class BoardController implements Initializable {
 		}
 		return list;
 	}
-	
+
 	public void handleBtnBackAction(ActionEvent e) {
 
 	}
-	
+
 	public void handleBtnNextAction(ActionEvent e) {
 
 	}
 
 	public void handleBtnModifyAction(ActionEvent e) {
+		ObservableList<Board> list = FXCollections.observableArrayList();
 		String sql = "UPDATE board SET content = ? WHERE title = ?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, );
+			pstmt.setString(1, txtContent.getText());
+			pstmt.setString(2, txtTitle.getText());
+			pstmt.executeUpdate();
+
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
+		messagePopup("수정되었습니다.");
+		showList();
 		
-}
+	}
+
+	public void messagePopup(String message) {
+		HBox hbox = new HBox();
+		hbox.setStyle("-fx-background-color : white; -fx-background-radius : 10;"); //팝업창 색상, 팝업창 겉면의 각? 지정 
+		hbox.setAlignment(Pos.CENTER);
+		//컨트롤 이미지뷰
+		ImageView imageView = new ImageView();
+		imageView.setImage(new Image("/icons/dialog-info.png"));
+		imageView.setFitHeight(30);
+		imageView.setFitWidth(30);
+		
+		//컨트롤 라벨
+		Label label = new Label();
+		
+		HBox.setMargin(label, new Insets(0, 5, 0, 5));
+		label.setText(message);
+		label.setStyle("-fx-text-fill: black;"); //글자색 지정
+		
+		//컨테이너에 컨트롤 담기.
+		hbox.getChildren().add(imageView);
+		hbox.getChildren().add(label);
+		
+		// 팝업창 생성하고 호출하기. 
+		Popup popup = new Popup();
+
+		popup.getContent().add(hbox);
+		popup.setAutoHide(true); // 팝업창이 뜨고 다시 실행하면(?) 팝업창이 사라지게 만듬.
+
+		popup.show(btnBack.getScene().getWindow()); // 등록 버튼을 입력했을 때, 팝업창을 띄워주는 역할
+
+	}
 
 }
